@@ -1,0 +1,15 @@
+LICENSE
+README.md
+pyproject.toml
+cf_stats.egg-info/PKG-INFO
+cf_stats.egg-info/SOURCES.txt
+cf_stats.egg-info/dependency_links.txt
+cf_stats.egg-info/entry_points.txt
+cf_stats.egg-info/requires.txt
+cf_stats.egg-info/top_level.txt
+cfstats/__init__.py
+cfstats/__main__.py
+cfstats/api.py
+cfstats/cache.py
+cfstats/cli.py
+cfstats/types.py

@@ -1,0 +1,2 @@
+[console_scripts]
+cf-stats = cfstats.cli:main

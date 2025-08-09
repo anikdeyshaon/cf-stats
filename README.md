@@ -1,0 +1,91 @@
+## cf-stats — Codeforces Personal Quick Stats CLI
+
+Get a quick snapshot of a Codeforces user's stats from your terminal.
+
+### Features
+- Shows current rating, max rating, rank, solved problem count, and contest count
+- Beautiful output using `rich`
+- Optional JSON output with `--json`
+- Local caching with configurable TTL (default 10 minutes)
+
+### Installation
+
+Recommended (isolated): use `pipx`.
+
+```bash
+pipx install .
+```
+
+Alternatively, using `pip` (in a virtual environment):
+
+```bash
+python -m venv .venv
+./.venv/Scripts/activate  # Windows PowerShell
+pip install .
+```
+
+### Usage
+
+```bash
+cf-stats <handle>
+```
+
+Examples:
+
+```bash
+# Pretty table
+cf-stats _Comfortably_Numb__
+
+# JSON output
+cf-stats _Comfortably_Numb__ --json
+
+# Disable cache
+cf-stats _Comfortably_Numb__ --no-cache
+
+# Set cache TTL to 30 minutes
+cf-stats _Comfortably_Numb__ --ttl 30
+```
+
+### Output
+
+Table example:
+
+```
+┏━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┓
+┃ Handle               ┃ Rank  ┃ Rating  ┃ Max Rating ┃ Solved ┃ Contests ┃
+┡━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━┩
+│ _Comfortably_Numb__  │ expert│ 1700    │ 1800       │ 1234   │ 57       │
+└──────────────────────┴───────┴─────────┴────────────┴────────┴──────────┘
+```
+
+JSON example:
+
+```json
+{
+  "handle": "_Comfortably_Numb__",
+  "rank": "expert",
+  "rating": 1700,
+  "maxRank": "candidate master",
+  "maxRating": 1900,
+  "solvedCount": 1234,
+  "contestCount": 57
+}
+```
+
+### Configuration
+
+- `--ttl <minutes>`: cache time-to-live in minutes (default: 10)
+- `--json`: print raw JSON instead of a table
+- `--no-cache`: bypass cache and fetch fresh data
+
+### Notes
+
+- Data is fetched from the free Codeforces API (`https://codeforces.com/api`).
+- Solved count is computed as the number of unique problems with accepted submissions.
+- Contest count is the number of contests in the user's rating history.
+
+### License
+
+MIT
+
+
