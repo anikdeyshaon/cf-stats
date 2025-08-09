@@ -8,20 +8,20 @@ Get a quick snapshot of a Codeforces user's stats from your terminal.
 - Optional JSON output with `--json`
 - Local caching with configurable TTL (default 10 minutes)
 
-### Installation
+### Run directly from source (no installer)
 
-Recommended (isolated): use `pipx`.
-
-```bash
-pipx install .
-```
-
-Alternatively, using `pip` (in a virtual environment):
+You can clone the repo and run the CLI without installing anything system-wide.
 
 ```bash
-python -m venv .venv
-./.venv/Scripts/activate  # Windows PowerShell
-pip install .
+# 1) Clone the repository
+git clone https://github.com/anikdeyshaon/cf-stats.git
+cd cf-stats
+
+# 2) Run the CLI module directly
+# Windows (PowerShell):
+py -m cfstats <handle>
+# macOS/Linux:
+python3 -m cfstats <handle>
 ```
 
 ### Usage
@@ -34,17 +34,19 @@ Examples:
 
 ```bash
 # Pretty table
-cf-stats _Comfortably_Numb__
+python -m cfstats _Comfortably_Numb__
 
 # JSON output
-cf-stats _Comfortably_Numb__ --json
+python -m cfstats _Comfortably_Numb__ --json
 
 # Disable cache
-cf-stats _Comfortably_Numb__ --no-cache
+python -m cfstats _Comfortably_Numb__ --no-cache
 
 # Set cache TTL to 30 minutes
-cf-stats _Comfortably_Numb__ --ttl 30
+python -m cfstats _Comfortably_Numb__ --ttl 30
 ```
+
+Note: This project requires Python 3.9+ and the dependencies listed in `pyproject.toml` (`requests`, `rich`, `platformdirs`). If you are missing them, install using your preferred method or environment manager.
 
 ### Output
 
