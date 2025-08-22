@@ -8,19 +8,50 @@ Get a quick snapshot of a Codeforces user's stats from your terminal.
 - Optional JSON output with `--json`
 - Local caching with configurable TTL (default 10 minutes)
 
+### Dependencies
+
+- Python 3.9+ (required for built-in typing like `list[str]`)
+- Python packages: `requests`, `rich`, `platformdirs`
+
 ### Run directly from source (no installer)
 
-You can clone the repo and run the CLI without installing anything system-wide.
+You can clone the repo and run the CLI without installing anything system-wide. Create a virtual environment in the project folder and install the few dependencies locally.
+
+Windows (PowerShell):
+
+```powershell
+# 1) Clone the repository
+git clone https://github.com/anikdeyshaon/cf-stats.git
+cd cf-stats
+
+# 2) Create and activate a virtual environment (local to this folder)
+py -m venv .venv
+./.venv/Scripts/Activate.ps1
+
+# 3) Install dependencies
+py -m pip install --upgrade pip
+py -m pip install requests rich platformdirs
+
+# 4) Run the CLI module
+py -m cfstats <handle>
+```
+
+macOS/Linux:
 
 ```bash
 # 1) Clone the repository
 git clone https://github.com/anikdeyshaon/cf-stats.git
 cd cf-stats
 
-# 2) Run the CLI module directly
-# Windows (PowerShell):
-py -m cfstats <handle>
-# macOS/Linux:
+# 2) Create and activate a virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3) Install dependencies
+python3 -m pip install --upgrade pip
+python3 -m pip install requests rich platformdirs
+
+# 4) Run the CLI module
 python3 -m cfstats <handle>
 ```
 
@@ -29,6 +60,8 @@ python3 -m cfstats <handle>
 ```bash
 cf-stats <handle>
 ```
+
+Note: The `cf-stats` console script is only available when installed as a package. When running from source as shown above, use `python -m cfstats` (or `py -m cfstats` on Windows).
 
 Examples:
 
@@ -46,7 +79,7 @@ python -m cfstats _Comfortably_Numb__ --no-cache
 python -m cfstats _Comfortably_Numb__ --ttl 30
 ```
 
-Note: This project requires Python 3.9+ and the dependencies listed in `pyproject.toml` (`requests`, `rich`, `platformdirs`). If you are missing them, install using your preferred method or environment manager.
+Note: This project requires Python 3.9+ and the following dependencies: `requests`, `rich`, and `platformdirs`. If they are missing, install them with pip as shown above (preferably in a virtual environment).
 
 ### Output
 
